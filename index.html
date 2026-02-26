@@ -61,11 +61,11 @@
           <span class="stat-label">Letters</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">60+</span>
+          <span class="stat-number">150+</span>
           <span class="stat-label">Words</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number">2</span>
+          <span class="stat-number">5</span>
           <span class="stat-label">Games</span>
         </div>
       </div>
@@ -113,6 +113,13 @@
         <button class="cat-tab" data-cat="numbers">🔢 Numbers</button>
         <button class="cat-tab" data-cat="fruits">🍎 Fruits</button>
         <button class="cat-tab" data-cat="body">👤 Body</button>
+        <button class="cat-tab" data-cat="family">👨‍👩‍👧‍👦 Family</button>
+        <button class="cat-tab" data-cat="school">🏫 School</button>
+        <button class="cat-tab" data-cat="food">🍽️ Food</button>
+        <button class="cat-tab" data-cat="weather">🌤️ Weather</button>
+        <button class="cat-tab" data-cat="clothes">👕 Clothes</button>
+        <button class="cat-tab" data-cat="vehicles">🚗 Vehicles</button>
+        <button class="cat-tab" data-cat="shapes">🔺 Shapes</button>
       </div>
 
       <div class="vocab-grid" id="vocabGrid"></div>
@@ -132,6 +139,9 @@
       <div class="game-selector">
         <button class="game-tab active" data-game="memory">🃏 Memory Match</button>
         <button class="game-tab" data-game="quiz">❓ Word Quiz</button>
+        <button class="game-tab" data-game="spelling">🔤 Spelling Bee</button>
+        <button class="game-tab" data-game="scramble">🔀 Word Scramble</button>
+        <button class="game-tab" data-game="listening">👂 Listening</button>
       </div>
 
       <!-- Memory Match Game -->
@@ -187,6 +197,96 @@
         </div>
       </div>
 
+      <!-- Spelling Bee Game -->
+      <div class="game-panel" id="game-spelling">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">📝 Word <strong id="spellNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="spellScore">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="spellStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="spelling-container" id="spellingContainer">
+          <div class="spelling-emoji" id="spellEmoji">🐱</div>
+          <button class="btn btn-small btn-secondary" id="spellListen">🔊 Listen</button>
+          <div class="spelling-input" id="spellInput"></div>
+          <div class="spelling-keyboard" id="spellKeyboard"></div>
+          <div class="spelling-feedback" id="spellFeedback"></div>
+        </div>
+        <div class="game-result hidden" id="spellResult">
+          <div class="result-card">
+            <div class="result-emoji" id="spellResultEmoji">🏆</div>
+            <h3 class="result-title" id="spellResultTitle">Great job!</h3>
+            <p class="result-stats">You spelled <strong id="spellFinalScore">0</strong> out of 10 correctly</p>
+            <button class="btn btn-primary" id="spellPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Word Scramble Game -->
+      <div class="game-panel" id="game-scramble">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">🔀 Word <strong id="scrNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="scrScore">0</strong></span>
+            <span class="info-badge">⏱ Time: <strong id="scrTimer">0</strong>s</span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="scrStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="scramble-container" id="scrambleContainer">
+          <div class="scramble-emoji" id="scrEmoji">🐱</div>
+          <p class="scramble-hint" id="scrHint">Hint: A pet that says meow</p>
+          <div class="scramble-answer" id="scrAnswer"></div>
+          <div class="scramble-letters" id="scrLetters"></div>
+          <div class="scramble-actions">
+            <button class="btn btn-small btn-secondary" id="scrClear">🗑️ Clear</button>
+            <button class="btn btn-small btn-secondary" id="scrHintBtn">💡 Show Hint</button>
+          </div>
+          <div class="scramble-feedback" id="scrFeedback"></div>
+        </div>
+        <div class="game-result hidden" id="scrResult">
+          <div class="result-card">
+            <div class="result-emoji" id="scrResultEmoji">🏆</div>
+            <h3 class="result-title" id="scrResultTitle">Awesome!</h3>
+            <p class="result-stats">You unscrambled <strong id="scrFinalScore">0</strong> out of 10 &nbsp;|&nbsp; Time: <strong id="scrFinalTime">0</strong>s</p>
+            <button class="btn btn-primary" id="scrPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Listening Game -->
+      <div class="game-panel" id="game-listening">
+        <div class="game-toolbar">
+          <div class="game-info">
+            <span class="info-badge">👂 Word <strong id="listenNum">1</strong>/10</span>
+            <span class="info-badge">⭐ Score: <strong id="listenScore">0</strong></span>
+          </div>
+          <div class="game-controls">
+            <button class="btn btn-small btn-primary" id="listenStart">▶ New Game</button>
+          </div>
+        </div>
+        <div class="listening-container" id="listeningContainer">
+          <div class="listening-prompt">
+            <p class="listening-text">Listen and choose the right picture!</p>
+            <button class="btn btn-primary listening-play-btn" id="listenPlayBtn">🔊 Play Sound</button>
+          </div>
+          <div class="listening-options" id="listenOptions"></div>
+          <div class="listening-feedback" id="listenFeedback"></div>
+        </div>
+        <div class="game-result hidden" id="listenResult">
+          <div class="result-card">
+            <div class="result-emoji" id="listenResultEmoji">🏆</div>
+            <h3 class="result-title" id="listenResultTitle">Well done!</h3>
+            <p class="result-stats">You got <strong id="listenFinalScore">0</strong> out of 10 correct</p>
+            <button class="btn btn-primary" id="listenPlayAgain">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -211,6 +311,9 @@
   <script src="js/vocabulary.js"></script>
   <script src="js/memory.js"></script>
   <script src="js/quiz.js"></script>
+  <script src="js/spelling.js"></script>
+  <script src="js/scramble.js"></script>
+  <script src="js/listening.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
